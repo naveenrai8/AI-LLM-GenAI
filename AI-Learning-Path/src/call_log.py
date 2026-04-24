@@ -1,8 +1,10 @@
 import csv, time, pathlib, os
+from pathlib import Path
+from find_root_directory import get_project_root
 
 from dataclasses import dataclass, asdict
-file_path = "data/cost_log.csv"
-LOG = pathlib.Path(file_path)
+BASE_DIR = get_project_root()
+LOG = BASE_DIR / "data" / "cost_log.csv"
 LOG.parent.mkdir(exist_ok=True)
 
 PRICES = {
@@ -43,7 +45,7 @@ def log_call(model: str, in_tokens: int, out_tokens: int, latency_ms: float, tag
     with LOG.open(mode="a", newline="") as f:
         w = csv.DictWriter(f, fieldnames=asdict(new_row).keys())
         print(w)
-        if not LOG.exists or os.path.getsize(file_path) == 0:
+        if not LOG.exists():
             print("inside")
             w.writeheader()
         w.writerow(asdict(new_row))
