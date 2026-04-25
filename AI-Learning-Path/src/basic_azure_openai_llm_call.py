@@ -7,7 +7,7 @@ from llm_call_logger import log_call
 
 load_dotenv()
 endpoint = os.getenv("AZURE_ENDPOINT")
-model = os.getenv("AZURE_OPENAI_MODEL_NAME")
+model = os.getenv("AZURE_GPT_5_MINI_MODEL")
 
 subscription_key = os.getenv("AZURE_OPENAI_API_KEY")
 api_version = os.getenv("AZURE_OPENAI_API_VERSION")
@@ -70,24 +70,24 @@ class CallAzureOpenAI:
 
 azure_openai_model = CallAzureOpenAI()
 
-
-azure_openai_model.call_model_single_response([
-                {
-                    "role": "system",
-                    "content": "You are a helpful assistant.",
-                },
-                {
-                    "role": "user",
-                    "content": "Explain AI in 2 sentence.",
-                }
-            ])
-azure_openai_model.call_model_stream_response([
-                {
-                    "role": "system",
-                    "content": "You are a helpful assistant.",
-                },
-                {
-                    "role": "user",
-                    "content": "Explain AI in 2 sentence.",
-                }
-            ])
+for i in range(0, 40):
+    azure_openai_model.call_model_single_response([
+                    {
+                        "role": "system",
+                        "content": "You are a helpful assistant.",
+                    },
+                    {
+                        "role": "user",
+                        "content": "Explain AI in 2 sentence.",
+                    }
+                ])
+    azure_openai_model.call_model_stream_response([
+                    {
+                        "role": "system",
+                        "content": "You are a helpful assistant.",
+                    },
+                    {
+                        "role": "user",
+                        "content": "Explain AI in 2 sentence.",
+                    }
+                ])
