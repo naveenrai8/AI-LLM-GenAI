@@ -1,0 +1,5 @@
+LangChain is a framework for developing LLM applications.
+FAISS is a library for efficient similarity search of dense vectors.
+Azure OpenAI provides cloud-hosted versions of GPT models.
+Python is the primary language used for AI development.
+       
