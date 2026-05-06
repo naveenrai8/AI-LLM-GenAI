@@ -1,9 +1,7 @@
 [project]
-name = "llm-understanding"
+name = "build-gpt-llm-scratch"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
-    "tiktoken>=0.12.0",
-]
+dependencies = []
